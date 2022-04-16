@@ -2,7 +2,7 @@
 name = "tickets-contract"
 version = "0.1.0"
 authors = ["Jaehong Ahn <monsieur.ahn@gmail.com>"]
-edition = "2022"
+edition = "2018"
 
 exclude = [
   # Those files are rust-optimizer artifacts. You might want to commit them for convenience but they should not be part of the source code publication.
