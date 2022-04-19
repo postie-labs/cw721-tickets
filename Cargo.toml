@@ -1,5 +1,5 @@
 [package]
-name = "tickets-contract"
+name = "cw721-tickets-contract"
 version = "0.1.0"
 authors = ["Jaehong Ahn <monsieur.ahn@gmail.com>"]
 edition = "2018"
