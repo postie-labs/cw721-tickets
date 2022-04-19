@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "NftInfoResponse",
+  "type": "object",
+  "properties": {
+    "extension": {
+      "description": "You can add any custom metadata here when you extend cw721-base",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Metadata"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "token_uri": {
+      "description": "Universal resource identifier for this NFT Should point to a JSON file that conforms to the ERC721 Metadata JSON Schema",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "definitions": {
+    "Attribute": {
+      "type": "object",
+      "required": [
+        "key",
+        "value"
+      ],
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "Metadata": {
+      "type": "object",
+      "required": [
+        "not_valid_after",
+        "not_valid_before"
+      ],
+      "properties": {
+        "attributes": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Attribute"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "not_valid_after": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "not_valid_before": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    }
+  }
+}
