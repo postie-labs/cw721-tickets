@@ -1,13 +1,16 @@
 [package]
-name = "cw721-tickets-contract"
+name = "cw721-tickets"
 version = "0.1.0"
 authors = ["Jaehong Ahn <monsieur.ahn@gmail.com>"]
 edition = "2018"
+description = "CW721-based NFT to store tickets metadata"
+repository = "https://github.com/postie-labs/cw721-tickets"
 
 exclude = [
   # Those files are rust-optimizer artifacts. You might want to commit them for convenience but they should not be part of the source code publication.
   "contract.wasm",
   "hash.txt",
+  "artifacts/*",
 ]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -33,10 +36,18 @@ backtraces = ["cosmwasm-std/backtraces"]
 library = []
 
 [package.metadata.scripts]
-optimize = """docker run --rm -v "$(pwd)":/code \
+build = "RUSTFLAGS='-C link-arg=-s' cargo wasm"
+optimize = """
+docker run --rm -v "$(pwd)":/code \
   --mount type=volume,source="$(basename "$(pwd)")_cache",target=/code/target \
   --mount type=volume,source=registry_cache,target=/usr/local/cargo/registry \
-  cosmwasm/rust-optimizer:0.12.5
+  cosmwasm/rust-optimizer:0.12.6
+"""
+optimize-arm64 = """
+docker run --rm -v "$(pwd)":/code \
+  --mount type=volume,source="$(basename "$(pwd)")_cache",target=/code/target \
+  --mount type=volume,source=registry_cache,target=/usr/local/cargo/registry \
+  cosmwasm/rust-optimizer-arm64:0.12.5
 """
 
 [dependencies]

@@ -198,7 +198,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "cw721-tickets-contract"
+name = "cw721-tickets"
 version = "0.1.0"
 dependencies = [
  "cosmwasm-schema",
