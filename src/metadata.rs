@@ -12,9 +12,8 @@ pub struct Attribute {
 
 #[derive(Serialize, Deserialize, Clone, PartialEq, JsonSchema, Debug, Default)]
 pub struct Metadata {
-    pub location: String,
-    pub date: String,
-    pub note: String,
+    pub not_valid_before: i64;
+    pub not_valid_after: i64;
     pub attributes: Option<Attribute>
 }
 
