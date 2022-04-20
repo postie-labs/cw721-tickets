@@ -115,14 +115,13 @@
       ],
       "properties": {
         "attributes": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Attribute"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/Attribute"
+          }
         },
         "not_valid_after": {
           "type": "integer",

@@ -11,7 +11,7 @@ pub struct Attribute {
 pub struct Metadata {
     pub not_valid_before: i64,
     pub not_valid_after: i64,
-    pub attributes: Option<Attribute>,
+    pub attributes: Option<Vec<Attribute>>,
 }
 
 pub type Extension = Option<Metadata>;
