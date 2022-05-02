@@ -1,6 +1,6 @@
-mod metadata;
+mod custom;
 
-pub use crate::metadata::Extension;
+pub use crate::custom::{Extension, MigrateMsg};
 
 use cosmwasm_std::Empty;
 pub use cw721_base::{ContractError, InstantiateMsg, MintMsg, MinterResponse, QueryMsg};
@@ -14,6 +14,15 @@ pub mod entry {
 
     use cosmwasm_std::entry_point;
     use cosmwasm_std::{Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult};
+
+    #[entry_point]
+    pub fn migrate(
+        _deps: DepsMut,
+        _env: Env,
+        _msg: MigrateMsg,
+    ) -> StdResult<Response> {
+        Ok(Response::default())
+    }
 
     #[entry_point]
     pub fn instantiate(
